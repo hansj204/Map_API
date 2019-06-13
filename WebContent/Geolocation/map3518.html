@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>나만의 마라탕 가게 한줄평</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+            width: auto;
+           height: 70%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 40px;
+            background-color: #CED8F6;
+        }
+    </style>
+  </head>
+  <body>
+      <center>
+      <h1>나만의 마라탕 가게 한줄평</h1>
+      <h4>3518 한수정</h4>
+    </center>
+    <div id="map"></div>
+    <div id="map2"></div>
+     <div id="map3"></div>  
+    <script>
+
+      // This example displays a marker at the center of Australia.
+      // When the user clicks the marker, an info window opens.
+
+      function initMap() {
+        var uluru = { lat: 37.555004,
+                    lng: 126.923625};
+          
+        var uluru2 = { lat: 37.583938,
+                    lng: 126.998097};  
+             
+        var uluru3 = { lat: 37.497818,
+                    lng: 127.028944}; 
+          
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: uluru
+        });
+          
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: uluru2
+        });
+          
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: uluru3
+        });  
+          
+          
+
+
+
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">별자리마라탕&훠궈</h1>'+
+            '<div id="bodyContent">'+
+            '<p>순한맛이 다른 곳에서 먹었던 것보다 많이 맵지 않다. 100g에 1450원인 곳이다.</p>'+
+            '</div>'+
+            '</div>';
+          
+             var contentString2 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">천향록</h1>'+
+            '<div id="bodyContent">'+
+            '<p>처음 마라탕을 만났던 곳이다. 별자리마라탕&훠궈집보다는 순한맛이 맵다. 또 가보고 싶다.100g에 1950원이다.</p>'+
+            '</div>'+
+            '</div>';
+          
+             var contentString3 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">라공방</h1>'+
+            '<div id="bodyContent">'+
+            '<p>100g에 1500원이다. 강남이다 보니 사람이 매우 많다. 사람이 많아서 서비스는 그리 좋지 않은 것 같다.</p>'+
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+          
+        var infowindow2 = new google.maps.InfoWindow({
+          content: contentString2
+        });
+            
+        var infowindow3 = new google.maps.InfoWindow({
+          content: contentString3
+        });
+          
+          
+            
+
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+          title: '별자리마라탕'
+        });
+          
+         var marker2 = new google.maps.Marker({
+          position: uluru2,
+          map: map,
+          title: '천향록'
+        });
+          
+        var marker3 = new google.maps.Marker({
+          position: uluru3,
+          map: map,
+          title: '라공방'
+        });
+          
+          
+          
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+             map.setZoom(18);
+        });
+          
+        marker2.addListener('click', function() {
+        infowindow2.open(map2, marker2);
+        map.setZoom(18);
+        });
+          
+        marker3.addListener('click', function() {
+        infowindow3.open(map3, marker3);
+        map.setZoom(18);
+        });
+          
+        map.addListener('click', function(e) {
+        placeMarkerAndPanTo(e.latLng, map);
+        });
+      }
+        
+        function placeMarkerAndPanTo(latLng, map) {
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map
+        });
+        map.panTo(latLng);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7nnoG8FxJ8CcMFYcE_isUIH-GUFvu4jA&callback=initMap">
+    </script>
+  </body>
+</html>
